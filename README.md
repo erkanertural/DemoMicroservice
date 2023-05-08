@@ -1,2 +1,2 @@
 # DemoMicroservice
-Demo Microservice .. RabbitMQ - EFCore - Generic Repository - FluentValidation - Refit - PostgreSQL
+Demo Microservice .. RabbitMQ - EFCore - Generic Repository - FluentValidation - Refit - PostgreSQL - AutoMapper - 

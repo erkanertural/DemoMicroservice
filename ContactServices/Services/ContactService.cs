@@ -113,7 +113,7 @@ namespace ContactServices.Services
         {
             List<ContactDetail> locList = _repoContactDetail.Query.Where(o => o.Type == ContactLibrary.Enums.ContactType.Location && o.Context == location).ToList();
             var contacts = locList.Select(o => o.ContactId).Distinct().ToList();
-            int locCountTel = locList.Where(o => o.Type == ContactLibrary.Enums.ContactType.Telephone && contacts.Contains(o.ContactId)).Count();
+            int locCountTel = _repoContactDetail.Query.Count(o => o.Type == ContactLibrary.Enums.ContactType.Telephone && contacts.Contains(o.ContactId));
             return await Task.FromResult(new Result<ReportDto>(new ReportDto { ContactCount = contacts.Count, Location = location, CountOfContactDetailTelephone = locCountTel }));
         }
     }

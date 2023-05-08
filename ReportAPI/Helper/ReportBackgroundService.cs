@@ -16,10 +16,10 @@ namespace ReportAPI.Helper
         private readonly IQueueConsumer _queueConsumer;
         private readonly ReportService reportService;
 
-        public ReportBackgroundService(ILoggerFactory loggerFactory, IServiceProvider service, IQueueConsumer consumer)
+        public ReportBackgroundService( ILoggerFactory loggerFactory, IServiceProvider service, IQueueConsumer consumer)
         {
             _queueConsumer = consumer;
-
+            reportService= service.CreateScope().ServiceProvider.GetRequiredService<ReportService>();
             this._logger = loggerFactory.CreateLogger<ReportBackgroundService>();
 
         }

@@ -8,13 +8,11 @@ namespace ReportData
     public class ReportContext : DbContext, IDBContext
     {
         protected readonly IConfiguration Configuration;
-        string myEnv = "";
+ 
         public ReportContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            myEnv = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            Configuration = new ConfigurationBuilder()
-                .AddJsonFile($"appsettings.{myEnv}.json", false)
-                .Build();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            Configuration = configuration;
         }
 
       

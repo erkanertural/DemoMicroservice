@@ -8,16 +8,11 @@ namespace ContactData
     public class ContactContext : DbContext, IDBContext
     {
         protected readonly IConfiguration Configuration;
-        string myEnv = "";
+
         public ContactContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            myEnv = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            if (myEnv is null)
-            { 
-             Configuration = new ConfigurationBuilder()                .AddJsonFile($"appsettings.development.json", false)                .Build();
-            }
-            else
-            Configuration = new ConfigurationBuilder()                .AddJsonFile($"appsettings.{myEnv}.json", false)                .Build();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            Configuration = configuration;
         }
 
       

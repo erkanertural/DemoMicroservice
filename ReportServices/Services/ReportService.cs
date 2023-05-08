@@ -1,5 +1,6 @@
 ﻿using ContactApiClient;
 using ContactMessages.Request;
+using Core.Message.Request;
 using Core.Repositories;
 using Core.Services;
 using Core.UnitofWork;
@@ -21,8 +22,12 @@ namespace ReportServices.Services
             _publisher = publisher;
             _publisher.InitRabbitMQ();
         }
-
-
+        public override  async Task<Result<Report>> Create(Report ent)
+        {
+            Result<Report> result= await base.Create(ent);
+            await UnitOfWork.SaveChangesAsync();
+            return result.Successful();
+        }
         public async Task<Result<bool>> PrepareReport(string location)
         {
             Result<ReportDto> resultReportDetail = await _contactApiClient.GetReportDetail(location);

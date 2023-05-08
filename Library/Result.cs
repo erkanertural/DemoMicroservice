@@ -42,7 +42,7 @@ namespace Library
         {
             Messages = new List<string>();
         }
-     
+
         public bool Success { get; set; }
         public List<string> Messages { get; set; }
 
@@ -50,9 +50,9 @@ namespace Library
 
         public T Data { get; set; }
 
-       
-            
-                        
+
+
+
         public Result<T> Error(string message = "")
         {
 
@@ -63,7 +63,13 @@ namespace Library
             Messages.Add(message);
             return this;
         }
-
+        public Result<T> Successful()
+        {
+        
+            HttpStatus = HttpStatusCode.OK;
+            Success = true;
+            return this;
+        }
         public Result<T> Successful(T data)
         {
             Data = data;
@@ -75,7 +81,7 @@ namespace Library
         {
 
             Data = default;
-            HttpStatus = HttpStatusCode.NoContent; 
+            HttpStatus = HttpStatusCode.NoContent;
             Success = false;
             return this;
 

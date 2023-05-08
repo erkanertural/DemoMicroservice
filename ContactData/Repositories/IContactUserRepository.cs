@@ -9,7 +9,7 @@ using Core.Repositories;
 
 namespace ContactData.Repositories
 {
-    public interface IBlockUserRepository : IRepository<Contact>
+    public interface IContactUserRepository : IRepository<Contact>
     {
 
     }

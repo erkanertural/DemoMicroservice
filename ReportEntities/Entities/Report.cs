@@ -15,7 +15,7 @@ namespace ReportEntities
         {
             Preparing, Completed
         }
-        public string Name { get; set; }
+
         public string FilePath { get; set; }
         public DateTime ReportDate { get; set; }
         public TaskStatusType TaskStatus { get; set; }

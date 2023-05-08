@@ -85,7 +85,7 @@ namespace TestProjectMS
         {
 
 
-            var r = c.Create(new Contact { Company = "Firma", Name = "Erkan", SurName = "Ertural" }).Result;
+            var r = c.Create(new Contact { Company = "Yýldýz A.Þ", Name = "Mehmet", SurName = "Yýldýz" }).Result;
 
             Assert.IsNotNull(r);
 
@@ -96,7 +96,7 @@ namespace TestProjectMS
         {
 
 
-            var r = c.AddContactDetail(new AddContactDetail { ContactId = 1, Context = "Gebze", Type = ContactType.Location }).Result;
+            var r = c.AddContactDetail(new AddContactDetail { ContactId = 2, Context = "Gebze", Type = ContactType.Location }).Result;
 
             Assert.IsNotNull(r);
 

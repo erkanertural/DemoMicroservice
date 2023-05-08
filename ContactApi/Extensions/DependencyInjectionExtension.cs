@@ -16,19 +16,12 @@ public static class DependencyInjectionExtension
     {
         // services.AddSingleton<IConfigurationService, ConfigurationService>();
         services.AddDbContext<IDBContext, ContactContext>();
-
         services.AddScoped<Repository, Repository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-  
-        services.AddTransient<IRepository<NoEntity>, Repository<NoEntity>>();
-        services.AddTransient<IRepository<Contact>, Repository<Contact>>();
-
-
-        services.AddTransient<BaseService<Contact>, ContactService>();
+        services.AddTransient(typeof (IRepository<>),typeof( Repository<>));
+        services.AddTransient(typeof(IBaseService<>), typeof(BaseService<>));
         services.AddTransient<ContactService>();
 
-        services.AddTransient<NoEntityService>();
-        services.AddTransient<BaseService<NoEntity>, NoEntityService>();
   
     }
 }

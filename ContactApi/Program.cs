@@ -110,8 +110,8 @@ namespace ContactAPI
                 {
                     Version = "v1.0",
 
-                    Title = "Upsilon API",
-                    Description = "<b>Upsilon</b>",
+                    Title = "Demo API",
+                    Description = "<b>Demo</b>",
                     Contact = new OpenApiContact
                     {
                         Name = "Front-end",

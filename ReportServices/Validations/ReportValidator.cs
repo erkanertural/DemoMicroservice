@@ -7,7 +7,7 @@ namespace ContactServices.Validations
     {
         public ReportValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("{PropertyName} not null");
+            RuleFor(x => x.ReportDate).NotEmpty().WithMessage("{PropertyName} not null");
                
         }
     }
